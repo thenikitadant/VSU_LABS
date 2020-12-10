@@ -1,4 +1,4 @@
-﻿// Введите 3 числа. Если они могут быть длинами строн равнобедренного остроугольного треугольника, вычислите его площадь.
+// Введите 3 числа. Если они могут быть длинами строн равнобедренного остроугольного треугольника, вычислите его площадь.
 // Выведите длины сторон и площадь в порядке возрастания значений.
 
 // Пестрецов Н. - 1 курс, 4 группа
@@ -8,7 +8,7 @@
 using namespace std;
 int main()
 {
-	double a, b, c, S, p;
+	double a, b, c, S, p, bub;
 	// length = 4, т.к. сортируются 4 значения (a, b, c, S)
 	const int length = 4;
 	cout << "enter a: ";
@@ -24,16 +24,31 @@ int main()
 				p = (a + b + c) / 2;
 				S = sqrt(p * (p - a) * (p - b) * (p - c));
 				cout << "S = " << S << endl;
-				double array[length] = { a, b, c, S };
-				sort(array, array + length);
 				for (int i = 0; i < length; ++i)
-				cout << array[i] << " ";
+				{
+					if (a > b) {
+						bub = a;
+						a = b;
+						b = bub;
+					}
+					if (b > c) {
+						bub = b;
+						b = c;
+						c = bub;
+					}
+					if (c > S) {
+						bub = c;
+						c = S;
+						S = bub;
+					}
+				}
+				cout << a << " " << b << " " << c << " " << S << endl;
 			}
-			// если не остроугольный!
+	// если не остроугольный!
 			else cout << "!Triangel isn't acute-angled";
-		// если не равнобедренный!
+	// если не равнобедренный!
 		else cout << "!Triangle isn't isosceles";
 	// если не может являться треугольником!
 	else cout << "!Wrong sides of a triangle";
-	return 0;	
+	return 0;
 }
