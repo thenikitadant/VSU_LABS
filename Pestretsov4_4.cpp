@@ -10,7 +10,7 @@ int main()
 {
 	int znam = 1;
 	int i, n, k = 0;
-	double a, x, eps, fact = 1, S = 0;
+	double a, x, eps, S = 0;
 	cout << "enter eps: ";
 	cin >> eps;
 	cout << "enter x (x <> 0): ";
